@@ -20,3 +20,47 @@ main {
   background-color: #f4f6f8;
   min-height: 100%;
 }
+
+/* =============================
+   🎧 Header Layout & Branding
+   ============================= */
+/* Header container with left-right alignment */
+header {
+  background-color: #f9fafb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  border-bottom: 1px solid #ced9eb;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Left side: logo + app name */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.podcast-icon {
+  margin-right: 5px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.app-name {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Right side: search + profile */
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 40px;
+  margin-left: 20px;
+  cursor: pointer;
+}
