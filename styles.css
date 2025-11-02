@@ -149,3 +149,19 @@ header {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
+
+/* Podcast list grid */
+.podcast-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.2rem;
+  justify-items: center;
+  align-items: stretch;
+}
+
+.no-results {
+  font-size: 18px;
+  color: #555;
+  text-align: center;
+  margin-top: 30px;
+}
