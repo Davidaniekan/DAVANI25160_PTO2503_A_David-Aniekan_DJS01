@@ -54,4 +54,89 @@ export class PodcastApp {
     this._bindPodcastIconReload();
   }
 
+  // Ensures dropdowns have a default selected value.
+  _ensureSelectDefaults() {
+    if (this.sortSelect && this.sortSelect.selectedIndex < 0)
+      this.sortSelect.selectedIndex = 0;
+    if (this.genreSelect && this.genreSelect.selectedIndex < 0)
+      this.genreSelect.selectedIndex = 0;
+  }
+
+  // Binds event listeners for search, filters, and dropdowns.
+  _bindUIActions() {
+    if (this.searchInput) {
+      // Live filtering as user types
+      this.searchInput.addEventListener("input", () => this.applyFilters());
+
+      // When Enter is pressed → apply search, blur input, collapse it
+      this.searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          this.applyFilters();
+          this.searchInput.blur();
+          this._collapseSearchInput(); // Collapse after search
+        }
+      });
+    }
+
+    // Search toggle button show/hide behavior
+    if (this.searchBtn && this.searchInput) {
+      this.searchBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.searchBtn.classList.add("hidden");
+        this.searchInput.classList.add("active");
+        this.searchInput.focus();
+      });
+
+      // Click outside to close search input
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".search-container")) {
+          this._collapseSearchInput();
+        }
+      });
+    }
+
+    // Filters and sorting
+    if (this.genreSelect)
+      this.genreSelect.addEventListener("change", () => this.applyFilters());
+    if (this.sortSelect)
+      this.sortSelect.addEventListener("change", () => this.applyFilters());
+  }
+
+  /**
+   * Applies current filters and updates the rendered podcast list.
+   */
+  applyFilters() {
+    const query = (this.searchInput?.value || "").trim();
+
+    // determine genre from displayed text
+    const genreLabel =
+      this.genreSelect?.options[this.genreSelect.selectedIndex]?.textContent ||
+      "";
+    const genreValue = parseGenreSelectLabel(genreLabel);
+
+    // determine sort from displayed text
+    const sortLabel =
+      this.sortSelect?.options[this.sortSelect.selectedIndex]?.textContent ||
+      "";
+    let sort = "recent";
+    if (/recent/i.test(sortLabel)) sort = "recent";
+    else if (/newest/i.test(sortLabel)) sort = "newest";
+    else if (/popular|popularity/i.test(sortLabel)) sort = "popular";
+
+    const results = this.filter.filter({ query, genre: genreValue, sort });
+    this.renderer.render(results);
+  }
+
+  /**
+   * Collapses the search input, showing the search icon again.
+   * Keeps the user’s search text visible for reference.
+   * @private
+   */
+  _collapseSearchInput() {
+    if (!this.searchInput || !this.searchBtn) return;
+    this.searchInput.blur(); // remove keyboard focus
+    this.searchInput.classList.remove("active"); // collapse field
+    this.searchBtn.classList.remove("hidden"); // show search icon again
+  }
 }
