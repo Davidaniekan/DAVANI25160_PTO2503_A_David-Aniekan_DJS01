@@ -651,3 +651,125 @@ body.fade-out {
     font-size: 1.7rem;
   }
 }
+
+/* ========================
+   💻 Tablet / iPad View
+   ======================== */
+@media (min-width: 501px) and (max-width: 1024px) {
+  /* General Layout */
+  header {
+    padding: 15px 24px;
+  }
+
+  .podcast-icon {
+    width: 36px;
+    margin-right: 8px;
+  }
+
+  .app-name {
+    font-size: 20px;
+  }
+
+  .profile-pic {
+    width: 36px;
+    margin-left: 15px;
+  }
+
+  /* Container */
+  .container {
+    padding: 0.625rem 2rem 2.5rem 2rem;
+  }
+
+  /* Filters */
+  .filters {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin: 15px 0 22px;
+    flex-wrap: nowrap;
+  }
+
+  .filters label {
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  #genreSelect,
+  #sortSelect {
+    font-size: 15px;
+    padding: 6px 11px;
+    border-radius: 6px;
+    min-width: 180px;
+  }
+
+  /* Podcast Grid */
+  .podcast-list {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+  }
+
+  /* Podcast Card */
+  .podcast-item {
+    max-width: 320px;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .podcast-item .podcast-cover {
+    height: 240px;
+    border-radius: 6px;
+  }
+
+  .podcast-info {
+    padding-top: 10px;
+  }
+
+  .podcast-info h2 {
+    font-size: 17px;
+  }
+
+  .podcast-info .updated {
+    font-size: 13px;
+  }
+
+  .genre-tag {
+    padding: 0.35rem 0.7rem;
+  }
+
+  /* Modal Styling */
+  .modal-content {
+    width: 85%;
+    max-width: 700px;
+    padding: 1rem;
+  }
+
+  .modal-title {
+    font-size: 19px;
+  }
+
+  .modal-cover-image {
+    width: 190px;
+    height: 190px;
+  }
+
+  .modal-text-section {
+    flex: 2 1 420px;
+  }
+
+  .modal-description {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .detail-genres {
+    gap: 8px;
+  }
+
+  .close-button {
+    font-size: 1.9rem;
+  }
+}
