@@ -67,6 +67,25 @@ export class PodcastRenderer {
       );
       info.appendChild(seasonsP);
 
+      // Genre tags
+      const genreWrap = document.createElement("div");
+      genreWrap.className = "genre-tags";
+      getGenreNames(show.genres, this.genres).forEach((g) => {
+        const tag = document.createElement("span");
+        tag.className = "genre-tag";
+        tag.textContent = g;
+        genreWrap.appendChild(tag);
+      });
+      info.appendChild(genreWrap);
+
+      // Updated date
+      const updatedP = document.createElement("p");
+      updatedP.className = "updated";
+      updatedP.textContent = `Updated: ${formatDate(show.updated)}`;
+      info.appendChild(updatedP);
+
+      card.appendChild(info);
+
       this.containerEl.appendChild(card);
     });
   }
