@@ -252,3 +252,13 @@ header {
   align-items: center;
   gap: 6px;
 }
+
+.podcast-info p {
+  margin-bottom: 0.3rem;
+}
+
+.podcast-info .season-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
