@@ -26,6 +26,18 @@ export class PodcastFilter {
   filter({ query = "", genre = null, sort = "recent" }) {
     let filtered = [...this.podcasts];
 
+    // Search filter
+    if (query) {
+      const q = query.toLowerCase();
+      filtered = filtered.filter((p) => {
+        const titleMatch = p.title.toLowerCase().includes(q);
+        const genreNames = getGenreNames(p.genres, this.genres)
+          .join(" ")
+          .toLowerCase();
+        return titleMatch || genreNames.includes(q);
+      });
+    }
+
     return filtered;
   }
 }
