@@ -103,6 +103,16 @@ export class PodcastApp {
       this.sortSelect.addEventListener("change", () => this.applyFilters());
   }
 
+  // Binds click event to the podcast icon to reload the page.
+  _bindPodcastIconReload() {
+    if (this.podcastIcon) {
+      this.podcastIcon.addEventListener("click", () => {
+        document.body.classList.add("fade-out"); // Add fade-out class to body
+        setTimeout(() => location.reload(), 400); // Delay reload to allow fade-out effect
+      });
+    }
+  }
+
   /**
    * Applies current filters and updates the rendered podcast list.
    */
