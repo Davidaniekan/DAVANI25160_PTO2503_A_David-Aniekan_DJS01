@@ -86,6 +86,15 @@ export class PodcastRenderer {
 
       card.appendChild(info);
 
+      // Event listeners for click and keyboard accessibility
+      card.addEventListener("click", () => this.onCardClick(show));
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          this.onCardClick(show);
+        }
+      });
+
       this.containerEl.appendChild(card);
     });
   }
