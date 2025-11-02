@@ -497,3 +497,16 @@ header {
   margin-right: 6px;
   opacity: 0.8;
 }
+
+/* Fade-out effect for body */
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Hover effect — enlarge + brighten + glow */
+.close-button:hover {
+  transform: scale(1.25);
+  filter: brightness(1.4);
+  text-shadow: 0 0 8px rgba(230, 57, 70, 0.5);
+}
