@@ -17,4 +17,57 @@ export class PodcastRenderer {
     this.onCardClick = onCardClick;
   }
 
+  /**
+   * Renders a list of podcasts.
+   * @param {Object[]} list - Array of podcast objects.
+   */
+  render(list = []) {
+    this.containerEl.innerHTML = "";
+
+    if (!list.length) {
+      this.containerEl.innerHTML = `<p class="no-results">No podcasts found.</p>`;
+      return;
+    }
+
+    list.forEach((show) => {
+      const card = document.createElement("article");
+      card.className = "podcast-item";
+      card.tabIndex = 0;
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", `${show.title} details`);
+
+      // Image
+      const podcastCover = document.createElement("img");
+      podcastCover.className = "podcast-cover";
+      podcastCover.src = show.image || "";
+      podcastCover.alt = `${show.title} cover`;
+      card.appendChild(podcastCover);
+
+      // Info section
+      const info = document.createElement("div");
+      info.className = "podcast-info";
+
+      const title = document.createElement("h2");
+      title.textContent = show.title;
+      info.appendChild(title);
+
+      const seasonsP = document.createElement("p");
+      seasonsP.className = "seasons";
+
+      const seasonIcon = document.createElement("img");
+      seasonIcon.src = "image/seasons-icon.svg";
+      seasonIcon.className = "season-icon";
+      seasonIcon.alt = "Seasons icon";
+
+      seasonsP.appendChild(seasonIcon);
+      seasonsP.appendChild(
+        document.createTextNode(
+          ` ${show.seasons} season${show.seasons === 1 ? "" : "s"}`
+        )
+      );
+      info.appendChild(seasonsP);
+
+      this.containerEl.appendChild(card);
+    });
+  }
 }
