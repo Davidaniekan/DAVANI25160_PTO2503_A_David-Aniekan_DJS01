@@ -51,6 +51,21 @@ export class PodcastFilter {
       }
     }
 
+    // Sort results
+    if (sort === "recent") {
+      filtered.sort((a, b) => new Date(b.updated) - new Date(a.updated));
+    } else if (sort === "newest") {
+      // attempt to sort by created then fallback to updated
+      filtered
+        .sort(
+          (a, b) =>
+            new Date(b.created || b.updated) - new Date(a.created || a.updated)
+        )
+        .reverse();
+    } else if (sort === "popular") {
+      filtered.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+    }
+
     return filtered;
   }
 }
