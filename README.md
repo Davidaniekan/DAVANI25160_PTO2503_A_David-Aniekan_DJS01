@@ -1,69 +1,147 @@
-# DJS01: Vanilla JS Podcast App
+# 🎧 Vanilla JS PodcastApp
+
+---
 
 ## Overview
 
-You will design and build a responsive web application that allows users to **browse podcast shows** on a landing page and **view detailed information** in a modal. The application should display clear, concise previews of podcast shows and offer additional information through a modal pop-up, **all without navigating away from the page**. Your app should showcase clean code architecture and strong UI/UX design while following JavaScript best practices.
+A modern, modular **Podcast Web Application** that allows users to explore, search, and filter podcasts with detailed modal views. The app is built with **clean architecture**, following **OOP and SOLID principles**, and written entirely in **vanilla JavaScript (ES modules)**.
 
 ---
 
-## Core Objectives
+## 📘 Project Description
 
-### 1. Landing Page – Podcast Previews
+**PodcastApp** is a lightweight, client-side application designed to let users:
+- Browse available podcasts,
+- Filter them by genre or sort order,
+- Perform live search,
+- View detailed information in a modal,
+- Enjoy smooth UX with animations and mobile responsiveness.
 
-- Display a list of podcast shows on the landing page.
-- Each podcast preview must include:
-  - Cover image
-  - Show title
-  - Number of seasons
-  - Genre names
-  - Last updated date (in a human-readable format)
-
-### 2. Modal View – Show Details
-
-- When a user clicks on a podcast preview, open a modal.
-- The modal should include:
-  - Larger cover image
-  - Podcast title
-  - Description of the show
-  - Genre tags
-  - Last updated date (readable format)
-  - List of season titles
-  - Number of episodes in each season
-- Include a clear and accessible way to **close the modal**.
-
-### 3. Code Architecture & Best Practices
-
-- Use **object-oriented programming (OOP)** where appropriate.
-- Apply **functional programming principles** to ensure modularity and predictability.
-- Follow **SOLID design principles** for clean, maintainable code.
-- Abstract repeated logic into **reusable functions or classes**.
-- Add **JSDoc comments** for major functions and modules.
+It is architected for **maintainability**, **scalability**, and **clarity**, using a modular design pattern that separates data, utilities, components, and controllers.
 
 ---
 
-## Technical Requirements
+## 🛠️ Technologies Used
 
-- Use **HTML, CSS (or Tailwind), and JavaScript**.
-- No page reloads: Use JavaScript to handle modal behaviour and data rendering.
-- Ensure all UI states (modal open/close, hover effects, etc.) work smoothly.
-- Ensure all data is displayed in a **readable and accessible format**.
-
----
-
-## Design & UX Goals
-
-- Visually appealing UI with clear layout and hierarchy.
-- Use a consistent **colour scheme, typography, spacing, and sizing**.
-- Accessibility considerations (contrast, font readability, responsive buttons).
-- App should be fully **responsive** on desktop, tablet, and mobile.
-
-Make sure to dive into the wireframe reference images folder for guidance on how to build the UI structure. Note that the UI wireframes for both Desktop and Mobile are included.  
-
-![alt text](<wireframe reference images/desktop view/desktop_modal_view.png>)
+| Category | Tools / Languages |
+|-----------|------------------|
+| **Frontend** | HTML5, CSS3, JavaScript (ES6 Modules) |
+| **Architecture** | Object-Oriented Programming (OOP), SOLID, Functional Utilities |
+| **Documentation** | JSDoc |
+| **Design** | Responsive Layout, Flexbox, CSS Grid |
+| **Assets** | SVG Icons (custom: podcast, search, user, seasons, calendar) |
 
 ---
 
-## Deliverables
+## 🌟 Features
 
-- A fully functional, responsive podcast preview web application.
-- Clean, well-commented source code (HTML, CSS, JS).
+### 🧩 Core Functionalities
+- **Podcast Listing** – Displays all available podcasts dynamically.
+- **Genre Filtering** – Filters podcasts by genre using dropdown options.
+- **Sorting** – Sorts podcasts by most recent, newest, or popularity.
+- **Search** – Provides live filtering as the user types, and search-on-enter behavior.
+- **Modal View** – Displays detailed podcast info including description, genres, and seasons.
+
+### 💡 Additional Enhancements
+- **Auto Live Search** — Podcasts filter in real-time as you type.
+- **Page Reload Icon** — Clicking the podcast icon reloads the app with a smooth fade-out animation.
+- **Responsive Design** — Fully optimized for desktop, tablet, and mobile.
+- **Animated Podcast Covers** — Flip animation on hover with subtle shine effects.
+- **Thematic Modal Styling** — Centered, scrollable, and width-adjusted dynamically.
+
+---
+
+## 📁 Project Structure
+
+```
+📂 PodcastApp/
+│
+├── index.html               # Main HTML layout
+├── styles.css               # Global and responsive styles
+├── main.js                  # Entry point script
+│
+├── 📂 components/
+│   ├── ModalManager.js      # Handles modal opening and closing
+│   ├── PodcastFilter.js     # Filters and sorts podcast data
+│   ├── PodcastRenderer.js   # Dynamically renders podcast cards
+│
+├── 📂 utils/
+│   ├── dateUtils.js         # Formats ISO dates into readable text
+│   ├── genreUtils.js        # Genre name and parsing helpers
+│   ├── seasonUtils.js       # Season data retrieval utility
+│
+├── PodcastApp.js            # Main controller class
+├── data.js                  # Podcast, genres, and seasons dataset
+└── 📂 image/                 # SVG icons and assets
+```
+
+---
+
+## ⚙️ Setup Instructions
+
+### 🧩 Steps
+1. **Clone or download** this repository:
+   ```bash
+   git clone https://github.com/Davidaniekan/DAVANI25160_PTO2503_A_David-Aniekan_DJS01.git
+   ```
+2. **Open the project folder:**
+   ```bash
+   cd podcastapp
+   ```
+3. **Run the app locally:**
+   - Double-click `index.html`
+   
+4. Visit:  
+   ```
+   http://localhost:5500
+   ```
+
+---
+
+## 🚀 Usage Guide
+
+1. **Browse Podcasts:**  
+   Scroll through the dynamically generated podcast list.
+
+2. **Search:**  
+   - Click the 🔍 icon to open the search bar.  
+   - Type any podcast name or genre.  
+   - Results update automatically as you type.  
+   - Press **Enter** to finalize the search (input loses focus but retains text).
+
+3. **Filter by Genre:**  
+   - Select any genre from the “Filter by” dropdown.  
+   - Results instantly update.
+
+4. **Sort Podcasts:**  
+   - Choose **Recently Updated**, **Most Popular**, or **Newest**.
+
+5. **Open Modal:**  
+   - Click on any podcast card to open detailed view.  
+   - Press **Esc** or click outside the modal to close it.
+
+6. **Reload App:**  
+   - Click the podcast icon to reload with a fade-out animation.
+
+---
+## 🌐 Live Demo
+
+- **Check out the project here:** [PodcastApp](https://podcastappstream.netlify.app)
+
+---
+
+## 🖼️ Screenshots
+
+### 🖥️ Desktop View
+![Desktop Modal View](screenshots/desktop-view.png)
+
+
+### 📱 Mobile View
+![Mobile Layout](screenshots/mobile-view.png)
+
+---
+
+## 👤 Author
+
+Developed by **David Aniekan**
+[GitHub](https://github.com/Davidaniekan) | [LinkedIn](https://linkedin.com/in/david-aniekan)
