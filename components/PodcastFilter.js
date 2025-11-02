@@ -38,6 +38,19 @@ export class PodcastFilter {
       });
     }
 
+    // Genre filter
+    if (genre !== null) {
+      if (typeof genre === "number") {
+        filtered = filtered.filter((p) => p.genres.includes(genre));
+      } else if (typeof genre === "string") {
+        filtered = filtered.filter((p) =>
+          getGenreNames(p.genres, this.genres).some(
+            (t) => t.toLowerCase() === genre.toLowerCase()
+          )
+        );
+      }
+    }
+
     return filtered;
   }
 }
